@@ -9,7 +9,7 @@
 * www.sojamo.de/libraries/controlp5
 *
 */
-
+/*
 
 import controlP5.*;
 
@@ -92,7 +92,7 @@ public void Component(String theText) {
   // automatically receives results from controller input
   println("a textfield event for controller 'input' : "+theText);
 }
-
+*/
 
 
 
