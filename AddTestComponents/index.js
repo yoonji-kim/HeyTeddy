@@ -296,6 +296,7 @@ function handleHowtoIntent (intentObj, component) {
     }
     intentObj.attributes.repromptSpeech = intentObj.t('PROTALK_REPROMPT');
     switch(component) {
+        /* DO NOT REMOVE THIS COMMENT: function handleHowtoIntent - user define test will be added here */
         case "rotary encoder":
         case "rotaryencoder":
         case "potentiometer":
@@ -1004,6 +1005,7 @@ function handleHardwareDebug(intentObj) {
     if(intentObj.attributes.action == "write") {
         if(intentObj.attributes.state == "hw_debug") component = intentObj.attributes.prevComponent;
         switch(component) {
+            /* DO NOT REMOVE THIS COMMENT: function handleHardwareDebug - user define test will be added here */
             case "servo motor":
             case "motor":
                 writeMotorJson(intentObj);
@@ -1068,6 +1070,7 @@ function helpHardwareDebug(intentObj) {
     resetPinJson(intentObj, intentObj.attributes.pinType);
 
     switch(component) {
+        /* DO NOT REMOVE THIS COMMENT: function helpHardwareDebug - user define test will be added here */
         case "temperature sensor":
         case "temperature":
             speechOutput = "How about putting the temperature sensor in opposite way?  <break time=\"10s\" /> ";
@@ -1176,6 +1179,27 @@ function handleHWTest(intentObj, component) {
     
     switch(component) {
         /* DO NOT REMOVE THIS COMMENT: function handleHWTest - user define test will be added here */
+		case "resistor":
+			component = "resistor";
+			intentObj.attributes.action = "write";
+			intentObj.attributes.pinType = "analog";
+			speechOutput = "Let's check the" + component + " is working. Tell me the pin number of Arduino you used.";
+			intentObj.emit(':ask', speechOutput);
+			break;
+		case "relay":
+			component = "relay";
+			intentObj.attributes.action = "write";
+			intentObj.attributes.pinType = "analog";
+			speechOutput = "Let's check the" + component + " is working. Tell me the pin number of Arduino you used.";
+			intentObj.emit(':ask', speechOutput);
+			break;
+		case "test component":
+			component = "test component";
+			intentObj.attributes.action = "write";
+			intentObj.attributes.pinType = "analog";
+			speechOutput = "Let's check the" + component + " is working. Tell me the pin number of Arduino you used.";
+			intentObj.emit(':ask', speechOutput);
+			break;
         case "tilt sensor":
             component = "tilt sensor";
             intentObj.attributes.action = "read";

@@ -17,4 +17,6 @@ photo resistor,,Photo cell,Light dependent resistor,Photo conductive cell
 rotary encoder,,,,
 board,,,,
 task,,,,
-motor-relay,,,,
+test component,,,,
+relay,,,,
+resistor,,,,
