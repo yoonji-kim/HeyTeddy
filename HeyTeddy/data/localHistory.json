@@ -1,0 +1,6 @@
+{"commands": [{
+  "action": "show",
+  "id": 7,
+  "params": {"component": "light sensor"},
+  "timestamp": "Mon, 15 Jul 2019 09:56:47 GMT"
+}]}

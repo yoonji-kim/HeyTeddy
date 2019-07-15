@@ -1,0 +1,17 @@
+{
+  "name": "skill-protalk-v2-nodejs",
+  "version": "1.0.0",
+  "description": "2nd version of protalk skill.",
+  "main": "index.js",
+  
+  "keywords": [
+    "alexa",
+    "skill",
+    "protalk"
+  ],
+  "author": "Yoonji Kim",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "alexa-sdk": "^1.0.12"
+  }
+}
