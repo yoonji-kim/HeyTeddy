@@ -213,7 +213,6 @@ public void InputForComponentName(String theText) {
 }
 
 public void modifyPdeForHowTo() {
-  if(imgFileLoaded) {
     pdeCodes = loadStrings("../HeyTeddy/ProTalkParser.pde");
     pdeCodesBackup = loadStrings("../HeyTeddy/ProTalkParser.pde");
     
@@ -224,7 +223,6 @@ public void modifyPdeForHowTo() {
         pdeCodes = splice(pdeCodes, code, i+1);
       }
     }
-  }
 }
 
 public void Add() {
@@ -347,11 +345,16 @@ public void Save() {
       saveTable(csvTableBackup, "componentList_bak.csv");  
       saveStrings("index.js", jsCodes);
       saveStrings("index.js.bak", jsCodesBackup);
-      if(imgFileLoaded) {
-        howto.save("../HeyTeddy/data/"+componentName+imgFormat);
-        saveStrings("../HeyTeddy/ProTalkParser.pde", pdeCodes);
-        saveStrings("../HeyTeddy/ProTalkParser.pde.bak", pdeCodesBackup);
+
+      if(!imgFileLoaded) {
+        howto = loadImage("./arduino_uno_board.png");
+        imgFormat = ".png";
       }
+      
+      howto.save("../HeyTeddy/data/"+componentName+imgFormat);
+      saveStrings("../HeyTeddy/ProTalkParser.pde", pdeCodes);
+      saveStrings("../HeyTeddy/ProTalkParser.pde.bak", pdeCodesBackup);
+      
       saveResult = "Saved.";
     } else {
       saveResult = "There is no change.";

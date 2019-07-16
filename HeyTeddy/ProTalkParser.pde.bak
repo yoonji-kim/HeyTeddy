@@ -199,9 +199,6 @@ class ProtalkParser extends Observable implements Runnable {
     } else if(component.equals("cathod l.e.d") || component.equals("color light") || component.equals("r.g.b. l.e.d.")) {
       ui.setBoardImg("rgbled.png");
     } /* DO NOT REMOVE THIS COMMENT: function setBoardImg */
-		else if(component.equals("fire sensor")) {
-			ui.setBoardImg("fire sensor");
-		}
 		else if(component.equals("test")) {
 			ui.setBoardImg("test");
 		}
