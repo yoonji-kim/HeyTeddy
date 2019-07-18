@@ -144,7 +144,29 @@ void setup() {
   }
   
   textFont(myFont);
+  loadAllDefualFiles();
   init = false;
+}
+
+void loadAllDefualFiles() {
+    csvTable = loadTable("../AlexaSkill/COMPONENT.csv");
+    csvTableBackup = loadTable("../AlexaSkill/COMPONENT.csv");
+    csvFile = "../AlexaSkill/COMPONENT.csv";
+    componentListStr = "";
+    for(int i=0; i<csvTable.getRowCount(); i++)
+      componentListStr += csvTable.getString(i, 0)+"\n";
+    componentList.setText(componentListStr);
+    csvFileLoaded = true;
+    
+    jsCodes = loadStrings("../AlexaSkill/index.js");
+    jsCodesBackup = loadStrings("../AlexaSkill/index.js");
+    jsFile = "../AlexaSkill/index.js";
+    jsFileLoaded = true;
+    
+    howto = loadImage("./arduino_uno_board.png");
+    imgFile = "./arduino_uno_board.png \n You can add the usage image of your new component.";
+    imgFormat = ".png";
+    imgFileLoaded = true;
 }
 
 void draw() {
@@ -155,7 +177,7 @@ void draw() {
   //text("This text is left aligned.",width/2,100); 
   text(jsFile, 280, 70);
   text(csvFile, 280, 120);
-  text(imgFile, 280, 170);
+  text(imgFile, 280, 160);
   text(componentDuplicateCheck, 380, 220);
   text(saveResult, 50, 600);
   fill(255);
@@ -345,11 +367,6 @@ public void Save() {
       saveTable(csvTableBackup, "componentList_bak.csv");  
       saveStrings("index.js", jsCodes);
       saveStrings("index.js.bak", jsCodesBackup);
-
-      if(!imgFileLoaded) {
-        howto = loadImage("./arduino_uno_board.png");
-        imgFormat = ".png";
-      }
       
       howto.save("../HeyTeddy/data/"+componentName+imgFormat);
       saveStrings("../HeyTeddy/ProTalkParser.pde", pdeCodes);
@@ -386,7 +403,7 @@ public void OpenJSfile(int theValue) {
 void csvFileSelected(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
-    csvFileLoaded = false;
+    //csvFileLoaded = false;
   } else {
     println("User selected " + selection.getAbsolutePath());
     if(selection.getPath().contains("csv")) {
@@ -401,7 +418,7 @@ void csvFileSelected(File selection) {
       csvFileLoaded = true;
     } else {
       csvFile = "Please, select the csv File";
-      csvFileLoaded = false;
+      //csvFileLoaded = false;
     }
   }
 }
@@ -409,7 +426,7 @@ void csvFileSelected(File selection) {
 void jsFileSelected(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
-    jsFileLoaded = false;
+    //jsFileLoaded = false;
   } else {
     println("User selected " + selection.getAbsolutePath());
     if(selection.getPath().contains("js")) {
@@ -418,8 +435,8 @@ void jsFileSelected(File selection) {
       jsFile = selection.getPath();
       jsFileLoaded = true;
     } else {
-      jsFile = "Please, select the js File";
-      jsFileLoaded = false;
+      jsFile = "Please, select the js File.";
+      //jsFileLoaded = false;
     }
   }
 }
@@ -427,7 +444,7 @@ void jsFileSelected(File selection) {
 void imgFileSelected(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
-    imgFileLoaded = false;
+    //imgFileLoaded = false;
   } else {
     imgFormat = "";
     println("User selected " + selection.getAbsolutePath());
@@ -443,7 +460,7 @@ void imgFileSelected(File selection) {
       howto = loadImage(imgFile);
     } else {
       imgFile = "Please, select the jpg or png File";
-      imgFileLoaded = false;
+      //imgFileLoaded = false;
     }
   }
 }
