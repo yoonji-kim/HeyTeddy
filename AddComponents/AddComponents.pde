@@ -1,5 +1,12 @@
 import controlP5.*;
 ControlP5 cp5;
+
+import g4p_controls.*;
+GTextArea txa_speechoutput;
+GTextArea txa_speechoutput_test;
+GLabel label_speechoutput;
+GLabel label_speechoutput_test;
+
 Table csvTable;
 Table csvTableBackup;
 String[] jsCodes;
@@ -12,6 +19,7 @@ String csvFile = "Load the csv file";
 String jsFile = "Load the js file";
 String imgFile = "You can add image file for how to use the new component";
 String componentName = "test";
+String speechOutput = "";
 String action = "none";
 String pinType = "none";
 String componentListStr = "Open the csv file to load the existing components list.";
@@ -31,10 +39,34 @@ RadioButton r1, r2;
 
 PFont myFont;
 
+void setupForG4p() {
+  G4P.setGlobalColorScheme(GCScheme.CYAN_SCHEME);
+  txa_speechoutput = new GTextArea(this, 280, 348, 480, 80);
+  txa_speechoutput.tag = "txa_speechoutput";
+  txa_speechoutput.setPromptText("Enter the speech output of the usage for your component.");
+  
+  txa_speechoutput_test = new GTextArea(this, 280, 450, 480, 80);
+  txa_speechoutput_test.tag = "txa_speechoutput_test";
+  txa_speechoutput_test.setPromptText("Enter the speech output for guild to test your component.");
+  
+  label_speechoutput = new GLabel(this, 280, txa_speechoutput.getY()-18, 480, 18);
+  label_speechoutput.setAlpha(190);
+  label_speechoutput.setTextAlign(GAlign.LEFT, null);
+  label_speechoutput.setOpaque(true);
+  
+  label_speechoutput_test = new GLabel(this, 280, txa_speechoutput_test.getY()-18, 480, 18);
+  label_speechoutput_test.setAlpha(190);
+  label_speechoutput_test.setTextAlign(GAlign.LEFT, null);
+  label_speechoutput_test.setOpaque(true);
+  
+  G4P.setCursor(ARROW);
+}
+
 void setup() {
   size(800,650);
   cp5 = new ControlP5(this);
-  myFont = createFont("Arial",14, true);
+  myFont = createFont("Arial",20, true);
+  setupForG4p();
   
   cp5.addButton("OpenJSfile")
      .setValue(1)
@@ -65,7 +97,7 @@ void setup() {
                      .setSize(200,200)
                      .setFont(myFont)
                      .setLineHeight(16)
-                     .setColor(color(128))
+                     .setColor(color(0))
                      .setColorBackground(color(255,100))
                      .setColorForeground(color(255,100))
                      ;
@@ -76,9 +108,23 @@ void setup() {
      .setSize(200,30)
      .setFont(myFont)
      .setAutoClear(false)
-     .setColor(color(255,0,0))
+     .setColorCursor(color(0))
+     .setColorBackground(color(255,255,255,29))
+     .setColor(color(0,0,0))
      .setFocus(true)
      ;
+  
+  //cp5.addTextfield("SpeechOutput")
+  //   .setCaptionLabel("")
+  //   .setPosition(280,330)
+  //   .setSize(480,200)
+  //   .setFont(myFont)
+  //   .setAutoClear(false)
+  //   .setColor(color(255,255,255))
+  //   .setColorCursor(color(255))
+  //   .setColorBackground(color(255,255,255,29))
+  //   .setFocus(true)
+  //   ;
        
   cp5.addButton("Add")
      .setPosition(280,200)
@@ -105,8 +151,8 @@ void setup() {
           .setPosition(50,250)
           .setSize(50,20)
           .setColorForeground(color(120))
-          .setColorActive(color(255))
-          .setColorLabel(color(255))
+          .setColorActive(color(232, 190, 205))
+          .setColorLabel(color(0))
           .setItemsPerRow(2)
           .setSpacingColumn(50)
           .addItem("Input",1)
@@ -126,8 +172,8 @@ void setup() {
           .setPosition(50,290)
           .setSize(50,20)
           .setColorForeground(color(120))
-          .setColorActive(color(255))
-          .setColorLabel(color(255))
+          .setColorActive(color(232, 190, 205))
+          .setColorLabel(color(0))
           .setItemsPerRow(2)
           .setSpacingColumn(50)
           .addItem("Analog",1)
@@ -170,9 +216,10 @@ void loadAllDefualFiles() {
 }
 
 void draw() {
-  background(0);
+  //background(138, 173, 186);
+  background(202, 224, 230);
   textFont(myFont);       
-  fill(255);
+  fill(0);
   //textAlign(LEFT);
   //text("This text is left aligned.",width/2,100); 
   text(jsFile, 280, 70);
@@ -183,9 +230,42 @@ void draw() {
   fill(255);
   //text(cp5.get(Textfield.class,"Component").getText(), 20, 130);
   componentName = cp5.get(Textfield.class,"InputForComponentName").getText();
+  //speechOutput = cp5.get(Textfield.class,"SpeechOutput").getText();
   componentList.setText(componentListStr);
   //text(Component, 360,180);
+  
+  label_speechoutput.setText("Speech output for \"How to use\" component");
+  label_speechoutput_test.setText("Speech output for \"Test\" component");
 }
+
+public void displayEvent(String name, GEvent event) {
+  String extra = " event fired at " + millis() / 1000.0 + "s";
+  print(name + "   ");
+  switch(event) {
+  case CHANGED:
+    println("CHANGED " + extra);
+    break;
+  case SELECTION_CHANGED:
+    println("SELECTION_CHANGED " + extra);
+    break;
+  case LOST_FOCUS:
+    println("LOST_FOCUS " + extra);
+    break;
+  case GETS_FOCUS:
+    println("GETS_FOCUS " + extra);
+    break;
+  case ENTERED:
+    println("ENTERED " + extra);  
+    break;
+  default:
+    println("UNKNOWN " + extra);
+  }
+}
+
+public void handleTextEvents(GEditableTextControl textControl, GEvent event) { 
+  displayEvent(textControl.tag, event);
+}
+
 
 void radioAction(int selected) {
   if(selected == 1) {
@@ -227,7 +307,6 @@ void controlEvent(ControlEvent theEvent) {
             );
   }
 }
-
 
 public void InputForComponentName(String theText) {
   // automatically receives results from controller input

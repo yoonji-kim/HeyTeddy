@@ -266,7 +266,7 @@ class DigitalPin extends Pin {
 			int digiValue = (value == 0) ? Arduino.LOW : Arduino.HIGH;
 			arduino.digitalWrite (pinNumber, digiValue);
 		} else {
-			//int mappedVal = (int) map(value, 0, 1024, 0, 255);
+			//int mappedVal = (int) map(value, 0, 1023, 0, 255);
 			//arduino.analogWrite (pinNumber, mappedVal);
       arduino.analogWrite (pinNumber, value);
 		}
@@ -600,7 +600,7 @@ class BoardUI implements Observer {
 				if (val == Arduino.LOW) valueVisual(src, 0, val);
 				else if(val >= Arduino.HIGH) valueVisual(src, 255, val);
 			} else {
-				int mappedVal = (int) map(val, 0, 1024, 0, 255);
+				int mappedVal = (int) map(val, 0, 1023, 0, 255);
         if ( (p.pinNumber == 3 || p.pinNumber == 5 || p.pinNumber == 6 || p.pinNumber == 9 || p.pinNumber == 10 | p.pinNumber == 11) && (p.getName().substring(0,1).equals("D")) )
           valueVisual(src, val, val);
         else

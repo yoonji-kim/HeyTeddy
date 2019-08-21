@@ -156,7 +156,7 @@ class ProtalkParser extends Observable implements Runnable {
 		else if (action.equals("delay")) println ("delay");
 		return a;
 	}
-
+/* DO NOT REMOVE THIS COMMENT: SET_BOARD_IMG */
   private void setBoardImg(JSONObject params) {
     String component =params.getString("component");
     
@@ -164,6 +164,8 @@ class ProtalkParser extends Observable implements Runnable {
       ui.setBoardImg("motor.png");
     } else if(component.equals("button")) {
       ui.setBoardImg("button.png");
+    } else if(component.equals("switch")) {
+      ui.setBoardImg("switch.png");
     } else if(component.equals("potentiometer") || component.equals("rotaryencoder")) {
       ui.setBoardImg("potentiometer.png");
     } else if(component.equals("photoresistor")) {
