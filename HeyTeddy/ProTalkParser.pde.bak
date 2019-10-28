@@ -156,7 +156,7 @@ class ProtalkParser extends Observable implements Runnable {
 		else if (action.equals("delay")) println ("delay");
 		return a;
 	}
-
+/* DO NOT REMOVE THIS COMMENT: SET_BOARD_IMG */
   private void setBoardImg(JSONObject params) {
     String component =params.getString("component");
     
@@ -164,6 +164,8 @@ class ProtalkParser extends Observable implements Runnable {
       ui.setBoardImg("motor.png");
     } else if(component.equals("button")) {
       ui.setBoardImg("button.png");
+    } else if(component.equals("switch")) {
+      ui.setBoardImg("switch.png");
     } else if(component.equals("potentiometer") || component.equals("rotaryencoder")) {
       ui.setBoardImg("potentiometer.png");
     } else if(component.equals("photoresistor")) {
@@ -199,6 +201,18 @@ class ProtalkParser extends Observable implements Runnable {
     } else if(component.equals("cathod l.e.d") || component.equals("color light") || component.equals("r.g.b. l.e.d.")) {
       ui.setBoardImg("rgbled.png");
     } /* DO NOT REMOVE THIS COMMENT: function setBoardImg */
+		else if(component.equals("FSR")) {
+			ui.setBoardImg("FSR.png");
+		}
+		else if(component.equals("FSR")) {
+			ui.setBoardImg("FSR.png");
+		}
+		else if(component.equals("Pressure sensor")) {
+			ui.setBoardImg("Pressure sensor.png");
+		}
+		else if(component.equals("fire sensor")) {
+			ui.setBoardImg("fire sensor");
+		}
 		else if(component.equals("test")) {
 			ui.setBoardImg("test");
 		}

@@ -628,6 +628,10 @@
                         "check {component}",
                         "test {component}"
                     ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
                 }
             ],
             "types": [
@@ -664,32 +668,50 @@
                     "values": [
                         {
                             "name": {
-                                "value": "is greater than"
+                                "value": "is greater than",
+                                "synonyms": [
+                                    ">"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "is greater than or equal to"
+                                "value": "is greater than or equal to",
+                                "synonyms": [
+                                    ">="
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "is less than or equal to"
+                                "value": "is less than or equal to",
+                                "synonyms": [
+                                    "<="
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "is less than"
+                                "value": "is less than",
+                                "synonyms": [
+                                    "<"
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "is not"
+                                "value": "is not",
+                                "synonyms": [
+                                    "!="
+                                ]
                             }
                         },
                         {
                             "name": {
-                                "value": "is"
+                                "value": "is",
+                                "synonyms": [
+                                    "=="
+                                ]
                             }
                         }
                     ]
@@ -697,6 +719,64 @@
                 {
                     "name": "COMPONENT",
                     "values": [
+                        {
+                            "name": {
+                                "value": "color light"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "l.e.d."
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "light",
+                                "synonyms": [
+                                    "Eleedi"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "light emitting diode"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hall sensor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tilt sensor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "piezo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "flex sensor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hall effect sensor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wind sensor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anemometer"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "temperature sensor"
@@ -737,11 +817,6 @@
                         {
                             "name": {
                                 "value": "rotary encoder"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "l.e.d."
                             }
                         },
                         {
