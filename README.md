@@ -11,3 +11,24 @@ For more information check the IMWUT Dec. 2019 paper: "HeyTeddy: Conversational 
 
 ## License
 MIT License
+
+## Citing
+```
+@article{10.1145/3369838,
+ author = {Kim, Yoonji and Choi, Youngkyung and Kang, Daye and Lee, Minkyeong and Nam, Tek-Jin and Bianchi, Andrea},
+ title = {HeyTeddy: Conversational Test-Driven Development for Physical Computing},
+ year = {2019},
+ issue_date = {December 2019},
+ publisher = {Association for Computing Machinery},
+ address = {New York, NY, USA},
+ volume = {3},
+ number = {4},
+ url = {https://doi.org/10.1145/3369838},
+ doi = {10.1145/3369838},
+ journal = {Proc. ACM Interact. Mob. Wearable Ubiquitous Technol.},
+ month = dec,
+ articleno = {Article 139},
+ numpages = {21},
+ keywords = {End-user development, Conversational agent, Test-driven development, Physical computing}
+}
+```
